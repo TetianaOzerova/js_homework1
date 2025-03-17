@@ -1,0 +1,9 @@
+const num1 = 3;
+const num2 = 9;
+const num3 = 3;
+
+
+let a= num2/num1;
+console.log(a); 
+let b=num3**a;//возведення в ступінь
+console.log(b);
