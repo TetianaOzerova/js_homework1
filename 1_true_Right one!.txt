@@ -1,0 +1,19 @@
+const Un = +null;
+const Boo2= false;
+num1=1;
+num2=5;
+let a=num1 ** num2;//ступінь
+console.log(a);
+let b=Un==Boo2;// 
+console.log(b); 
+
+
+ if (a < b) alert( 'Left one!');
+ else 
+ alert( 'Right one!');
+
+
+Результат
+1
+true
+Right one!
