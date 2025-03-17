@@ -1,0 +1,12 @@
+const num1 = null;//undefined
+
+
+const name = '';//string порожня строка але не рівна null
+let a= num1==name;//не строге рівняння
+
+
+console.log(a);
+Результат
+
+
+false
