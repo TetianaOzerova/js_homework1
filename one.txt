@@ -1,0 +1,10 @@
+const num1 = 3;
+
+
+const name = '4';//string
+let a= name-num1;// 4 преводиться до числа
+console.log(a); 
+
+
+Результат
+1
