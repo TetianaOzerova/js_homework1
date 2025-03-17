@@ -1,0 +1,10 @@
+const num1 = 3;
+
+
+const name = '4px';//NaN
+let a= name-num1;// будь-які операціі з NaN  дають NaN
+console.log(a);
+
+
+Результат 
+NaN
