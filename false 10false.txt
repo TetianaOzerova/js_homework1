@@ -1,0 +1,12 @@
+const num1 = 5;
+const num2 = 6;
+const name = '10';//string
+let a= num1===num2;//дивимся чи спивпадае num1 та  num2 - ні
+console.log(a); 
+let b=name+a;//конкатенація
+console.log(b);
+
+
+Результат
+false
+10false
