@@ -1,0 +1,16 @@
+const Boo1 = true;
+const Boo2= false;
+//Логічні операції: Операції "І" (&&) мають вищий пріоритет над операціями "АБО" (||). 
+let a= Boo2&&Boo1;//логічне "АБО"  false && true );  // false
+console.log(a); 
+let b=a||Boo1;// false || true );  // true
+console.log(b);
+
+
+
+
+Результат
+
+
+false
+true
