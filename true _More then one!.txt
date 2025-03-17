@@ -1,0 +1,16 @@
+const name1 = +null;//Unandified
+const Boo = false;
+
+
+let a= name1 ==Boo;//
+console.log(a); 
+ if (a < 1) alert( 'Less then one!');
+ else 
+ alert( 'More then one!');
+
+
+Результат
+
+
+true
+More then one!
