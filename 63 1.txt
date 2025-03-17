@@ -1,0 +1,15 @@
+const num1 = 3;
+const num2 = 0;
+const name = '6';//string
+let a= name+num1;// конкатенация
+console.log(a); 
+
+
+console.log(a ** 0);// возведення у ступінь
+
+
+Результат
+
+
+63
+1
