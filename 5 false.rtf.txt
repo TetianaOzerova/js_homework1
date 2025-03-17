@@ -1,0 +1,13 @@
+﻿const num1 = 6;
+const num2 = 5;
+const name = '10';//стрінг
+let a= name-num2;
+console.log(a); //5
+
+
+console.log(a === 6);// перевірка рівності 
+
+
+Результат
+5
+false
