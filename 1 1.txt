@@ -1,0 +1,13 @@
+const name1 = '0';//string 
+const num2 = 0;
+const num3 = 1;
+//const name2 = 'true';//string 
+//Логічні операції: Операції "І" (&&) мають вищий пріоритет над операціями "АБО" (||). 
+let a= name1 && num3;//&& логічне "І"
+console.log(a); 
+let b=num2||a;//|| логічне "АБО" ( false || true );  - true
+console.log(b);
+
+
+Результат
+1 1
