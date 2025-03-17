@@ -1,0 +1,10 @@
+﻿const num1 = 3;
+const num2 = 3;
+const name = 'number';//стрінг
+
+
+console.log(name + num2 + num1);//  конкатенація та ще одна конкатенація
+
+
+Результат
+number33
