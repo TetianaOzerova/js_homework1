@@ -1,0 +1,15 @@
+const name1 = 'false';//string 
+
+
+const name2 = 'true';//string 
+let a= !!name1;//Подвійне НІ 
+console.log(a); 
+let b=!!name2;//Подвійне НІ 
+console.log(b);
+console.log(a == b);
+
+
+Результат
+true
+true
+true
