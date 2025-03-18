@@ -1,0 +1,7 @@
+﻿function pow(x, y) {
+    let result = 1;
+    for (i=0; i < y; i++) result *= x;// множимо result на x y разів в циклі
+   
+    return result;
+}
+alert('there is!', pow(2, 3) );
