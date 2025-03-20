@@ -1,0 +1,35 @@
+﻿const min = 1;
+const max = 1000;
+function checkProbabilityTheory(count)
+{
+ let even = 0;
+ let odd = 0;
+ let numbers = [];
+
+
+for (let i = 0; i < count; i++) 
+{
+  let num = Math.floor(Math.random() * (max - min)) + min;
+  numbers.push(num);
+  
+  if (num % 2 === 0) 
+  {
+    even++;
+  } 
+  else
+  {
+ odd++;
+  }
+  }
+
+
+   // console.log("Згенеровані числа:", numbers);//я знаю, що не треба виводити, то для перевирки
+   console.log("Кількість згенерованих чисел:", even+odd);
+    console.log("Кількість парних чисел:", even);
+    console.log("Кількість непарних чисел:", odd);
+    console.log("відсоткове співвідношення,%:", (even/odd)*100);
+    
+}
+
+
+checkProbabilityTheory(21);
