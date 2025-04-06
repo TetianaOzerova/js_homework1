@@ -1,0 +1,38 @@
+﻿var arr = [
+    {
+        userName:"Test",
+        lastName:"Test",
+        email:"test.test@gmail.com"
+    },
+    {
+        userName:"Dmitro",
+        lastName:"Porohov",
+        email:"dmitro.porohov@yahoo.com"
+    },
+    {
+        userName:"Andrii",
+        lastName:"",
+        email:"andrii@mail.ru" // Нам такі не підходять
+    },
+];
+
+
+function findTrustedEmails(users) { //Ця функція приймає як вхідні масив об’єктів користувача.
+  const trustedDomains = ["gmail.com", "yahoo.com"];//Масив, що містить довірені домени електронної пошти (gmail, yahoo.)
+  const trustedEmails = [];
+  const emailRegex = /^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?)\@((gmail|yahoo)\.com)$/; //Регулярний вираз для перевірки адрес електронної пошти, вона повінна належать до gmail.com або yahoo.com і дотримуватися основного формату перед символом @.
+
+
+  users.forEach(user => {
+    if (user.email && emailRegex.test(user.email)) { //Якщо обидві умови виконуються, адреса електронної пошти вважається надійною.
+      trustedEmails.push(user.email);
+    }
+  });
+
+
+  return trustedEmails;
+}
+
+
+const trustedEmails = findTrustedEmails(arr);
+console.log(trustedEmails);
