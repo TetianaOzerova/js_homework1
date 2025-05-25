@@ -1,0 +1,119 @@
+{
+	"id": "7870fb0a-e7c0-430f-b9cb-b15f13769636",
+	"name": "Hellel",
+	"timestamp": "2025-05-25T09:07:37.195Z",
+	"collection_id": "44192342-ceb1b417-8931-4fba-984e-914076455cb9",
+	"folder_id": "44192342-03826506-6ddb-48f2-a360-38c0d5e598d3",
+	"environment_id": "44192342-437e4006-4144-4280-a7d6-079329ed2799",
+	"totalPass": 1,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-25T09:07:36.099Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "48904e20-c50c-48b2-82d0-3fab0ffbb0c3",
+			"name": "Середня Площа",
+			"url": "https://graphql-ukrainian-cities.hillel.it/graphql",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Відповідь 200 OK": true
+			},
+			"testPassFailCounts": {
+				"Відповідь 200 OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				239
+			],
+			"allTests": [
+				{
+					"Відповідь 200 OK": true
+				}
+			]
+		},
+		{
+			"id": "cd3ee3fb-54cc-4816-b4f5-7c13c69ed6ad",
+			"name": "Disccription",
+			"url": "https://graphql-ukrainian-cities.hillel.it/graphql",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				47
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "546388d4-abab-4726-b360-fb943a910fbb",
+			"name": "отримання міст в діапазоні",
+			"url": "https://graphql-ukrainian-cities.hillel.it/graphql",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				46
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "180877e2-2e11-40b8-bcd4-8b589be83482",
+			"name": "запит на створення нового міста",
+			"url": "https://graphql-ukrainian-cities.hillel.it/graphql",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				46
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 378,
+	"collection": {
+		"requests": [
+			{
+				"id": "48904e20-c50c-48b2-82d0-3fab0ffbb0c3",
+				"method": "POST"
+			},
+			{
+				"id": "cd3ee3fb-54cc-4816-b4f5-7c13c69ed6ad",
+				"method": "POST"
+			},
+			{
+				"id": "546388d4-abab-4726-b360-fb943a910fbb",
+				"method": "POST"
+			},
+			{
+				"id": "180877e2-2e11-40b8-bcd4-8b589be83482",
+				"method": "POST"
+			}
+		]
+	}
+}

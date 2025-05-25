@@ -1,0 +1,1981 @@
+{
+	"info": {
+		"_postman_id": "ceb1b417-8931-4fba-984e-914076455cb9",
+		"name": "Hellel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44192342"
+	},
+	"item": [
+		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "Validation",
+					"item": [
+						{
+							"name": "neg1",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"N\",\n\"lastName\":\"Test\",\n\"email\":\"tanyavozerova3@gmail.com\",\n\"password\":\"123Qwerty\",\n\"repeatPassword\":\"123Qwerty\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg2",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\",\n\"lastName\":\"Test\",\n\"email\":\"tanyavozerova3@gmail.com\",\n\"password\":\"123Qwerty\",\n\"repeatPassword\":\"123Qwerty\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg3",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"\",\n\"lastName\":\"Test\",\n\"email\":\"tanyavozerova3@gmail.com\",\n\"password\":\"123Qwerty\",\n\"repeatPassword\":\"123Qwerty\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg4",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"123\",\n\"lastName\":\"Test\",\n\"email\":\"tanyavozerova3@gmail.com\",\n\"password\":\"123Qwerty\",\n\"repeatPassword\":\"123Qwerty\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg5",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"!@#$$%%\",\n\"lastName\":\"Test\",\n\"email\":\"tanyavozerova3@gmail.com\",\n\"password\":\"123Qwerty\",\n\"repeatPassword\":\"123Qwerty\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Створення користувача",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"userId\",jsonData.data.userId);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.request.headers)",
+									"pm.collectionVariables.set(\"Mail_Test\",pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"FirstName\",pm.variables.replaceIn(\"{{$randomFirstName}}\"));",
+									"pm.collectionVariables.set(\"LastName\",pm.variables.replaceIn(\"{{$randomLastName}}\"));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "welcome2qauto",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"email\":\"{{Mail_Test}}\",\n\"password\": \"Test12334\",\n\"repeatPassword\": \"Test12334\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Зміни profile користувача.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"country\":\"Ukraine\",\n\"dateBirth\":\"1984-04-29T00:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/profile",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Зміна password користувачу",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//var jsonData = pm.response.json() ;",
+									"///pm.collectionVariables.set(\"NewPassword\",jsonData.data.userId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"Test12334\",\n  \"password\": \"Qwerty123\",\n  \"repeatPassword\": \"Qwerty123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}api/users/password",
+							"host": [
+								"{{Url}}api"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.collectionVariables.get(\"{{Mail_Test}}\");",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\": \"{{Mail_Test}}\",\n\"password\": \"Qwerty123\",\n\"remember\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto2.forstudy.space/api/auth/singin",
+							"protocol": "https",
+							"host": [
+								"qauto2",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"singin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додавання авто",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.collectionVariables.get(\"{{userId}}\");",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"carId\",jsonData.data.id);",
+									"pm.collectionVariables.set(\"initial_Mileage\",jsonData.data.initialMileage);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":1000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/cars",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додвання витрати створеній автівці. Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":10000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cars/{{carId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"{{carId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "відалення юзера",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dev QAAuto",
+			"item": [
+				{
+					"name": "Створення користувача+json schema",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code==! 201) console.log(pm.response.status);",
+									"console.log(JSON.parse(pm.response.text()))",
+									"//if(pm.response.text().includes('status: \"ok\"'))",
+									"{",
+									"    JSON.parse(pm.response.text())",
+									"}",
+									"//else{",
+									"  //  console.log(\"Tests stopped\");",
+									"    // postman.setNextRequest(null);",
+									"   // pm.execution.setNextRequest(null);",
+									"//}",
+									"console.log(JSON.parse(pm.request.body.raw).mail);",
+									"",
+									"pm.collectionVariables.set('mail', JSON.parse(pm.request.body.raw).email);",
+									"pm.collectionVariables.set('pass', JSON.parse(pm.request.body.raw).password);",
+									"",
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"userId\",jsonData.data.userId);",
+									"",
+									"pm.test(\"email\", function () {",
+									"    var email = pm.collectionVariables.get(\"mail\"); ",
+									"    var emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;",
+									"    pm.expect(emailRegex.test(email)).to.be.true;",
+									"});",
+									"",
+									"var schema = {",
+									"",
+									"\"type\": \"object\",",
+									"  \"properties\": {",
+									"  \"status\": {",
+									"     \"type\": \"string\"",
+									"   },",
+									"    \"data\": {",
+									"     \"type\": \"object\",",
+									"     \"properties\": {",
+									"       \"userId\": {",
+									"         \"type\": \"integer\"",
+									"       },",
+									"       \"photoFilename\": {",
+									"      \"type\": \"string\"",
+									"        },",
+									"       \"distanceUnits\": {",
+									"         \"type\": \"string\"",
+									"      },",
+									"        \"currency\": {",
+									"          \"type\": \"string\"",
+									"       }",
+									"     },",
+									"     \"required\": [",
+									"       \"userId\",",
+									"     \"photoFilename\",",
+									"       \"distanceUnits\",",
+									"       \"currency\"",
+									"     ]",
+									"    }",
+									"  },",
+									"  \"required\": [",
+									"   \"status\",",
+									"   \"data\"",
+									"  ]",
+									"}",
+									"pm.test('Schema is valid', function () {",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.request.headers)",
+									"pm.collectionVariables.set(\"Mail_Test\",pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"FirstName\",pm.variables.replaceIn(\"{{$randomFirstName}}\"));",
+									"pm.collectionVariables.set(\"LastName\",pm.variables.replaceIn(\"{{$randomLastName}}\"));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "welcome2qauto",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"email\":\"{{Mail_Test}}\",\n\"password\": \"Test12334\",\n\"repeatPassword\": \"Test12334\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Зміни profile користувача.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"",
+									"if (pm.response.code==! 200) console.log(pm.response.status);",
+									"console.log(JSON.parse(pm.response.text()))",
+									"if(pm.response.text().includes('status: \"ok\"')){",
+									"    JSON.parse(pm.response.text())",
+									"}",
+									"else{",
+									"    console.log(\"Tests stopped\");",
+									"    // postman.setNextRequest(null);",
+									"   // pm.execution.setNextRequest(null);",
+									"",
+									"    const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Response status is OK\", () => {",
+									"  pm.expect(responseJson.status).to.equal(\"ok\");",
+									"});",
+									"",
+									"pm.test(\"Full response matches request body\", () => {",
+									"  const requestBody = JSON.parse(pm.request.body.raw);",
+									"  pm.expect(responseJson.data.name).to.equal(requestBody.name);",
+									"  pm.expect(responseJson.data.lastName).to.equal(requestBody.lastName);",
+									"  pm.expect(responseJson.data.country).to.equal(requestBody.country);",
+									"",
+									"  //  перевірка дати народження",
+									"  const requestDateBirth = new Date(requestBody.dateBirth);",
+									"  const responseDateBirth = new Date(responseJson.data.dateBirth);",
+									"",
+									"  pm.expect(responseDateBirth.getFullYear()).to.equal(requestDateBirth.getFullYear());",
+									"  pm.expect(responseDateBirth.getMonth()).to.equal(requestDateBirth.getMonth());",
+									"  pm.expect(responseDateBirth.getDate()).to.equal(requestDateBirth.getDate());",
+									"});",
+									"}",
+									"var schema = {",
+									"\"type\": \"object\",",
+									"  \"properties\": {",
+									"  ",
+									"    \"status\": {",
+									"      \"type\": \"string\"",
+									"    },",
+									"    \"data\": {",
+									"      \"type\": \"object\",",
+									"      \"properties\": {",
+									"        \"userId\": {",
+									"          \"type\": \"integer\"",
+									"        },",
+									"        \"photoFilename\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"name\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"lastName\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"dateBirth\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"country\": {",
+									"          \"type\": \"string\"",
+									"        }",
+									"      },",
+									"      \"required\": [",
+									"        \"userId\",",
+									"        \"photoFilename\",",
+									"        \"name\",",
+									"        \"lastName\",",
+									"        \"dateBirth\",",
+									"        \"country\"",
+									"      ]",
+									"    }",
+									"  },",
+									"  \"required\": [",
+									"    \"status\",",
+									"    \"data\"",
+									"  ]",
+									"}",
+									"",
+									"pm.test('Schema is valid', function () {",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"country\":\"Ukraine\",\n\"dateBirth\":\"2006-04-29T00:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/profile",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "перевірити що userId відповідає такий самий як при створені користувача.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('pass', JSON.parse(pm.request.body.raw).password);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"pass\",function ()",
+									" {",
+									"     var expectedUserId= pm.collectionVariables.get(\"userId\"); ",
+									"    if (!pm.response || pm.response.userId !== expectedUserId) ",
+									"    {",
+									"      console.error(\"Невірний userId \");",
+									"      return false;",
+									"    }",
+									"",
+									"    console.log(\"Перевірка пройшла успішно.\");",
+									"    return true;",
+									"  ",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"{{pass}}\",\n  \"password\": \"Qwerty123\",\n  \"repeatPassword\": \"Qwerty123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/users/password",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\": \"{{Mail_Test}}\",\n\"password\": \"{{pass}}\",\n\"remember\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto2.forstudy.space/api/auth/singin",
+							"protocol": "https",
+							"host": [
+								"qauto2",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"singin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додавання авто",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.collectionVariables.get(\"{{userId}}\");",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"carId\",jsonData.data.id);",
+									"pm.collectionVariables.set(\"initial_Mileage\",jsonData.data.initialMileage);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":1000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/cars",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додвання витрати створеній автівці. Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"mileage\", function () {",
+									" var mileage = pm.collectionVariables.get(\"initial_Mileage\");",
+									" mileage = mileage+100;",
+									" pm.collectionVariables.set(\"initial_Mileage\",mileage);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":10000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cars/{{carId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"{{carId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "відалення юзера",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Collection Runner_AUTO",
+			"item": [
+				{
+					"name": "Створення користувача+json schema",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// var temp = pm.iterationData.get(\"Base_URL\");",
+									"console.log(pm.iterationData.get(\"base_URL\"))",
+									"pm.iterationData.get(\"Mail_Test\");",
+									"pm.iterationData.get(\"FirstName\");",
+									"pm.iterationData.get(\"LastName\");",
+									"pm.iterationData.get(\"Password\");",
+									"",
+									"",
+									"//pm.collectionVariables.set(\"Mail_Test\",pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"//pm.collectionVariables.set(\"FirstName\",pm.variables.replaceIn(\"{{$randomFirstName}}\"));",
+									"//pm.collectionVariables.set(\"LastName\",pm.variables.replaceIn(\"{{$randomLastName}}\"));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code==! 201) console.log(pm.response.status);",
+									"console.log(JSON.parse(pm.response.text()))",
+									"//if(pm.response.text().includes('status: \"ok\"'))",
+									"{",
+									"    JSON.parse(pm.response.text())",
+									"}",
+									"//else{",
+									"  //  console.log(\"Tests stopped\");",
+									"    // postman.setNextRequest(null);",
+									"   // pm.execution.setNextRequest(null);",
+									"//}",
+									"console.log(JSON.parse(pm.request.body.raw).mail);",
+									"",
+									"pm.collectionVariables.set('mail', JSON.parse(pm.request.body.raw).email);",
+									"pm.collectionVariables.set('pass', JSON.parse(pm.request.body.raw).password);",
+									"",
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"userId\",jsonData.data.userId);",
+									"",
+									"pm.test(\"email\", function () {",
+									"    var email = pm.collectionVariables.get(\"mail\"); ",
+									"    var emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;",
+									"    pm.expect(emailRegex.test(email)).to.be.true;",
+									"});",
+									"",
+									"var schema = {",
+									"",
+									"\"type\": \"object\",",
+									"  \"properties\": {",
+									"  \"status\": {",
+									"     \"type\": \"string\"",
+									"   },",
+									"    \"data\": {",
+									"     \"type\": \"object\",",
+									"     \"properties\": {",
+									"       \"userId\": {",
+									"         \"type\": \"integer\"",
+									"       },",
+									"       \"photoFilename\": {",
+									"      \"type\": \"string\"",
+									"        },",
+									"       \"distanceUnits\": {",
+									"         \"type\": \"string\"",
+									"      },",
+									"        \"currency\": {",
+									"          \"type\": \"string\"",
+									"       }",
+									"     },",
+									"     \"required\": [",
+									"       \"userId\",",
+									"     \"photoFilename\",",
+									"       \"distanceUnits\",",
+									"       \"currency\"",
+									"     ]",
+									"    }",
+									"  },",
+									"  \"required\": [",
+									"   \"status\",",
+									"   \"data\"",
+									"  ]",
+									"}",
+									"pm.test('Schema is valid', function () {",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "welcome2qauto",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"email\":\"{{Mail_Test}}\",\n\"password\": \"{{Password}}\",\n\"repeatPassword\": \"{{Password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/auth/signup",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Зміни profile користувача.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"",
+									"if (pm.response.code==! 200) console.log(pm.response.status);",
+									"console.log(JSON.parse(pm.response.text()))",
+									"if(pm.response.text().includes('status: \"ok\"')){",
+									"    JSON.parse(pm.response.text())",
+									"}",
+									"else{",
+									"    console.log(\"Tests stopped\");",
+									"    // postman.setNextRequest(null);",
+									"   // pm.execution.setNextRequest(null);",
+									"",
+									"    const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Response status is OK\", () => {",
+									"  pm.expect(responseJson.status).to.equal(\"ok\");",
+									"});",
+									"",
+									"pm.test(\"Full response matches request body\", () => {",
+									"  const requestBody = JSON.parse(pm.request.body.raw);",
+									"  pm.expect(responseJson.data.name).to.equal(requestBody.name);",
+									"  pm.expect(responseJson.data.lastName).to.equal(requestBody.lastName);",
+									"  pm.expect(responseJson.data.country).to.equal(requestBody.country);",
+									"",
+									"  //  перевірка дати народження",
+									"  const requestDateBirth = new Date(requestBody.dateBirth);",
+									"  const responseDateBirth = new Date(responseJson.data.dateBirth);",
+									"",
+									"  pm.expect(responseDateBirth.getFullYear()).to.equal(requestDateBirth.getFullYear());",
+									"  pm.expect(responseDateBirth.getMonth()).to.equal(requestDateBirth.getMonth());",
+									"  pm.expect(responseDateBirth.getDate()).to.equal(requestDateBirth.getDate());",
+									"});",
+									"}",
+									"var schema = {",
+									"\"type\": \"object\",",
+									"  \"properties\": {",
+									"  ",
+									"    \"status\": {",
+									"      \"type\": \"string\"",
+									"    },",
+									"    \"data\": {",
+									"      \"type\": \"object\",",
+									"      \"properties\": {",
+									"        \"userId\": {",
+									"          \"type\": \"integer\"",
+									"        },",
+									"        \"photoFilename\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"name\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"lastName\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"dateBirth\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"country\": {",
+									"          \"type\": \"string\"",
+									"        }",
+									"      },",
+									"      \"required\": [",
+									"        \"userId\",",
+									"        \"photoFilename\",",
+									"        \"name\",",
+									"        \"lastName\",",
+									"        \"dateBirth\",",
+									"        \"country\"",
+									"      ]",
+									"    }",
+									"  },",
+									"  \"required\": [",
+									"    \"status\",",
+									"    \"data\"",
+									"  ]",
+									"}",
+									"",
+									"pm.test('Schema is valid', function () {",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{FirstName}}\",\n\"lastName\":\"{{LastName}}\",\n\"country\":\"Ukraine\",\n\"dateBirth\":\"2006-04-29T00:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/users/profile",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "перевірити що userId відповідає такий самий як при створені користувача.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('pass', JSON.parse(pm.request.body.raw).password);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"pass\",function ()",
+									" {",
+									"     var expectedUserId= pm.collectionVariables.get(\"userId\"); ",
+									"    if (!pm.response || pm.response.userId !== expectedUserId) ",
+									"    {",
+									"      console.error(\"Невірний userId \");",
+									"      return false;",
+									"    }",
+									"",
+									"    console.log(\"Перевірка пройшла успішно.\");",
+									"    return true;",
+									"  ",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"{{pass}}\",\n  \"password\": \"Qwerty123\",\n  \"repeatPassword\": \"Qwerty123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/users/password",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/auth/logout",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\": \"{{Mail_Test}}\",\n\"password\": \"{{Password}}\",\n\"remember\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/auth/singin",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"singin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додавання авто",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.collectionVariables.get(\"{{userId}}\");",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json() ;",
+									"pm.collectionVariables.set(\"carId\",jsonData.data.id);",
+									"pm.collectionVariables.set(\"initial_Mileage\",jsonData.data.initialMileage);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":1000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/cars",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Додвання витрати створеній автівці. Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"mileage\", function () {",
+									" var mileage = pm.collectionVariables.get(\"initial_Mileage\");",
+									" mileage = mileage+100;",
+									" pm.collectionVariables.set(\"initial_Mileage\",mileage);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"carBrandId\":2,\n\"carModelId\":6,\n\"mileage\":10000}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/api/cars/{{carId}}",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"{{carId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "відалення юзера",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/users",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UkrSity",
+			"item": [
+				{
+					"name": "Середня Площа",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"const jsonData = JSON.parse(responseBody);",
+									"const cities = jsonData.data.getAllCities;",
+									"",
+									"let randomIds = [];",
+									"for (let i = 0; i < 4; i++) {",
+									"  const randomIndex = Math.floor(Math.random() * cities.length);",
+									"  randomIds.push(cities[randomIndex].id);",
+									"}",
+									"",
+									"let totalSquare = 0;",
+									"cities.forEach(city => {",
+									"    totalSquare += city.square;",
+									"});",
+									"const averageSquare = totalSquare / cities.length;",
+									"const roundedAverageSquare = Math.round(averageSquare);",
+									"",
+									"pm.collectionVariables.set(\"averageCitySquare\", roundedAverageSquare);",
+									"",
+									"console.log(\"Випадкові ID:\", randomIds);",
+									"console.log(\"Середня площа:\", roundedAverageSquare);",
+									"",
+									"",
+									"",
+									"pm.collectionVariables.set(\"randomCityIds\", JSON.stringify(randomIds));",
+									"pm.collectionVariables.set(\"averageCitySquare\", roundedAverageSquare);",
+									"",
+									"",
+									"pm.test(\"Відповідь 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetAllCities {\n  getAllCities {\n    id\n    name\n    square\n\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disccription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let randomCityIdsString = pm.collectionVariables.get(\"randomCityIds\");",
+									"let randomCityIds = JSON.parse(randomCityIdsString);",
+									"",
+									"let query = `query { `;",
+									"",
+									"randomCityIds.forEach(id => {",
+									"  query += `",
+									"    getCityDescription${id}: getCityDescription(id: \"${id}\") ",
+									"  `;",
+									"});",
+									"",
+									"query += `}`;",
+									"",
+									"pm.variables.set(\"dynamicQuery\", query);",
+									"",
+									"console.log(\"Динамічний запит:\", query);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{{dynamicQuery}}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "отримання міст в діапазоні",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const randomIdsString = pm.collectionVariables.get(\"randomCityIds\");",
+									"const randomIds = JSON.parse(randomIdsString);",
+									"",
+									"// Знаходимо найменший та найбільший ID",
+									"const minId = Math.min(...randomIds);",
+									"const maxId = Math.max(...randomIds);",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query{\n  getAllCities{\n    id\n    name\n    square\n    ... on City{\n        description\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "запит на створення нового міста",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const randomCityName = Math.random().toString(36)+\"-City\";",
+									"pm.collectionVariables.set(\"City\", randomCityName);",
+									"",
+									"const averageCitySquare = pm.collectionVariables.get(\"averageCitySquare\");",
+									"",
+									"console.log(\"Випадкове ім'я міста:\", randomCityName);",
+									"console.log(\"Середня площа:\", averageCitySquare); ",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  addCity(\n    name: \"{{City}}\"\n   square: 185#\"{{averageCitySquare}}\"\n    description: \"Best\"\n  ) {\n    id\n    name\n    square\n    ... on City {\n      description\n    }\n  }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Mail_Test",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "FirstName",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "LastName",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "carId",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "initial_Mileage",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "mail",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "pass",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "randomCityIds",
+			"value": ""
+		},
+		{
+			"key": "averageCitySquare",
+			"value": ""
+		},
+		{
+			"key": "City",
+			"value": ""
+		}
+	]
+}
