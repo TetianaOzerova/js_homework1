@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "acb12d50-ddd0-4685-8df0-83b5dd1ecda0",
+		"name": "Public SOAP APIs",
+		"description": "This is a collection of different SOAP APIs that are completley public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44192342"
+	},
+	"item": [
+		{
+			"name": "Book ISBN Numbers",
+			"item": [
+				{
+					"name": "Is Valid ISBN13 Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status",
+									"pm.test(\"Response status code is 200\", function () {",
+									" pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Headers",
+									"pm.test(\"Content-Type is text/xml\", function () {",
+									"pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+									"});",
+									"",
+									"pm.test(\"Header 'Content-Length' exists and has expected value\", function () {",
+									"  pm.response.assert.hasHeader('Content-Length');",
+									"  pm.expect(pm.response.headers.get('Content-Length')).to.be.a('string');",
+									"  pm.expect(parseInt(pm.response.headers.get('Content-Length'), 10)).to.be.a('number');",
+									"  pm.expect(pm.response.headers.get('Content-Length')).to.equal('302'); ",
+									"});",
+									"",
+									"pm.test(\"Header 'Referrer-Policy' exists and has expected value\", function () {",
+									"  pm.response.assert.hasHeader('Referrer-Policy');",
+									"  pm.expect(pm.response.headers.get('Referrer-Policy')).to.equal('strict-origin-when-cross-origin');",
+									"});",
+									"",
+									"   pm.test(\"Date header not empty\", function () {",
+									"    pm.expect(pm.response.headers.get('Date')).to.exist;",
+									"   });",
+									"//Schema",
+									"pm.test(\"Schema validation for the response body\", function () {",
+									"  const responseData = xml2Json(pm.response.text());",
+									"  ",
+									"  pm.expect(responseData).to.have.property('soap:Envelope');",
+									"  pm.expect(responseData['soap:Envelope']).to.have.property('$');",
+									"  pm.expect(responseData['soap:Envelope']['$']).to.have.property('xmlns:soap', '');",
+									"  pm.expect(responseData['soap:Envelope']).to.have.property('soap:Body');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']).to.have.property('m:IsValidISBN13Response');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN13Response']).to.have.property('$');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN13Response']['$']).to.have.property('xmlns:m', '');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN13Response']).to.have.property('m:IsValidISBN13Result');",
+									"});",
+									"//Body",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.have.property('soap:Envelope');",
+									"    pm.expect(responseData).to.have.property('soap:Body');",
+									"    pm.expect(responseData).to.have.property('m:IsValidISBN13Response');",
+									"    pm.expect(responseData).to.have.property('m:IsValidISBN13Result');",
+									"});",
+									"pm.test(\"Field data type is boolean-like\", function () {",
+									"   var fieldValue = \"true\"; ",
+									" pm.expect(fieldValue).to.be.a('string'); ",
+									" pm.expect(fieldValue === \"true\" || fieldValue === \"false\").to.be.true; ",
+									"",
+									" pm.test(\"Field value is exactly 'true'\", function hhh() {",
+									"  var fieldValue = \"true\"; ",
+									"  pm.expect(fieldValue).to.equal(\"true\");",
+									" });",
+									"",
+									"pm.test(\"Response body does not contain 'false' in expected field\", function () {",
+									"  pm.response.assert.textIncludes(\"<m:IsValidISBN13Result>true<///m:IsValidISBN13Result>\"); ",
+									"  pm.response.assert.textNotIncludes(\"<m:IsValidISBN13Result>false<///m:IsValidISBN13Result>\"); ",
+									"});",
+									"",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN13 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>978-1-4612-9090-2</sISBN>\n    </IsValidISBN13>\n  </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number."
+					},
+					"response": [
+						{
+							"name": "Is Valid ISBN13 Number",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/xml; charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN13 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>978-1-4612-9090-2</sISBN>\n    </IsValidISBN13>\n  </soap:Body>\n</soap:Envelope>"
+								},
+								"url": {
+									"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+									"protocol": "http",
+									"host": [
+										"webservices",
+										"daehosting",
+										"com"
+									],
+									"path": [
+										"services",
+										"isbnservice.wso"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private, max-age=0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/xml; charset=utf-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "Web-Service",
+									"value": "DataFlex 18.2"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "interest-cohort=()"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15768000;includeSubdomains"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 19:14:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "302"
+								}
+							],
+							"cookie": [],
+							"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <m:IsValidISBN13Response xmlns:m=\"http://webservices.daehosting.com/ISBN\">\n            <m:IsValidISBN13Result>true</m:IsValidISBN13Result>\n        </m:IsValidISBN13Response>\n    </soap:Body>\n</soap:Envelope>"
+						}
+					]
+				},
+				{
+					"name": "Is Valid ISBN10 Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status",
+									"pm.test(\"Response status code is 200\", function () {",
+									" pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Headers",
+									"pm.test(\"Content-Type is text/xml\", function () {",
+									"pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+									"});",
+									"",
+									"pm.test(\"Header 'Content-Length' exists and has expected value\", function () {",
+									"  pm.response.assert.hasHeader('Content-Length');",
+									"  pm.expect(pm.response.headers.get('Content-Length')).to.be.a('string');",
+									"  pm.expect(parseInt(pm.response.headers.get('Content-Length'), 10)).to.be.a('number');",
+									"  pm.expect(pm.response.headers.get('Content-Length')).to.equal('302'); ",
+									"});",
+									"",
+									"pm.test(\"Header 'Referrer-Policy' exists and has expected value\", function () {",
+									"  pm.response.assert.hasHeader('Referrer-Policy');",
+									"  pm.expect(pm.response.headers.get('Referrer-Policy')).to.equal('strict-origin-when-cross-origin');",
+									"});",
+									"",
+									"   pm.test(\"Date header not empty\", function () {",
+									"    pm.expect(pm.response.headers.get('Date')).to.exist;",
+									"   });",
+									"//Schema",
+									"pm.test(\"Schema validation for the response body\", function () {",
+									"  const responseData = xml2Json(pm.response.text());",
+									"  ",
+									"  pm.expect(responseData).to.have.property('soap:Envelope');",
+									"  pm.expect(responseData['soap:Envelope']).to.have.property('$');",
+									"  pm.expect(responseData['soap:Envelope']['$']).to.have.property('xmlns:soap', '');",
+									"  pm.expect(responseData['soap:Envelope']).to.have.property('soap:Body');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']).to.have.property('m:IsValidISBN10Response');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN10Response']).to.have.property('$');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN10Response']['$']).to.have.property('xmlns:m', '');",
+									"  pm.expect(responseData['soap:Envelope']['soap:Body']['m:IsValidISBN10Response']).to.have.property('m:IsValidISBN10Result');",
+									"});",
+									"//Body",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.have.property('soap:Envelope');",
+									"    pm.expect(responseData).to.have.property('soap:Body');",
+									"    pm.expect(responseData).to.have.property('m:IsValidISBN10Response');",
+									"    pm.expect(responseData).to.have.property('m:IIsValidISBN10Result');",
+									"});",
+									"pm.test(\"Field data type is boolean-like\", function () {",
+									"   var fieldValue = \"true\"; ",
+									" pm.expect(fieldValue).to.be.a('string'); ",
+									" pm.expect(fieldValue === \"true\" || fieldValue === \"false\").to.be.true; ",
+									"",
+									" pm.test(\"Field value is exactly 'true'\", function hhh() {",
+									"  var fieldValue = \"true\"; ",
+									"  pm.expect(fieldValue).to.equal(\"true\");",
+									" });",
+									"",
+									"pm.test(\"Response body does not contain 'false' in expected field\", function () {",
+									"  pm.response.assert.textIncludes(\"<m:IsValidISBN10Result>true<///m:IsValidISBN10Result>\"); ",
+									"  pm.response.assert.textNotIncludes(\"<m:IsValidISBN10Result>false<///m:IsValidISBN10Result>\"); ",
+									"});",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN10 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>0-19-852663-6</sISBN>\n    </IsValidISBN10>\n  </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X."
+					},
+					"response": []
+				}
+			],
+			"description": "SOAP APIs for book ISBN numbers.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

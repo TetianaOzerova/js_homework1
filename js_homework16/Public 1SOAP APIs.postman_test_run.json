@@ -1,0 +1,192 @@
+{
+	"id": "6c2f3aaa-84c8-4bb7-8b98-e4f29f473667",
+	"name": "Public SOAP APIs",
+	"timestamp": "2025-05-29T19:24:54.134Z",
+	"collection_id": "44192342-acb12d50-ddd0-4685-8df0-83b5dd1ecda0",
+	"folder_id": 0,
+	"environment_id": "44192342-437e4006-4144-4280-a7d6-079329ed2799",
+	"totalPass": 10,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-29T19:24:53.343Z",
+	"totalFail": 10,
+	"results": [
+		{
+			"id": "79c57e83-72da-41a5-9a48-7e08e2037884",
+			"name": "Is Valid ISBN13 Number",
+			"url": "http://webservices.daehosting.com/services/isbnservice.wso",
+			"time": 161,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Content-Type is text/xml": true,
+				"Header 'Content-Length' exists and has expected value": false,
+				"Header 'Referrer-Policy' exists and has expected value": false,
+				"Date header not empty": true,
+				"Schema validation for the response body": false,
+				"Response has the required fields": false,
+				"Field value is exactly 'true'": true,
+				"Response body does not contain 'false' in expected field": false,
+				"Field data type is boolean-like": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is text/xml": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header 'Content-Length' exists and has expected value": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Header 'Referrer-Policy' exists and has expected value": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Date header not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Schema validation for the response body": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Field value is exactly 'true'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body does not contain 'false' in expected field": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Field data type is boolean-like": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				161
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Content-Type is text/xml": true,
+					"Header 'Content-Length' exists and has expected value": false,
+					"Header 'Referrer-Policy' exists and has expected value": false,
+					"Date header not empty": true,
+					"Schema validation for the response body": false,
+					"Response has the required fields": false,
+					"Field value is exactly 'true'": true,
+					"Response body does not contain 'false' in expected field": false,
+					"Field data type is boolean-like": true
+				}
+			]
+		},
+		{
+			"id": "04927a79-6411-4534-8efb-560ad642eb44",
+			"name": "Is Valid ISBN10 Number",
+			"url": "http://webservices.daehosting.com/services/isbnservice.wso",
+			"time": 93,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Content-Type is text/xml": true,
+				"Header 'Content-Length' exists and has expected value": false,
+				"Header 'Referrer-Policy' exists and has expected value": false,
+				"Date header not empty": true,
+				"Schema validation for the response body": false,
+				"Response has the required fields": false,
+				"Field value is exactly 'true'": true,
+				"Response body does not contain 'false' in expected field": false,
+				"Field data type is boolean-like": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is text/xml": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Header 'Content-Length' exists and has expected value": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Header 'Referrer-Policy' exists and has expected value": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Date header not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Schema validation for the response body": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Field value is exactly 'true'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body does not contain 'false' in expected field": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Field data type is boolean-like": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Content-Type is text/xml": true,
+					"Header 'Content-Length' exists and has expected value": false,
+					"Header 'Referrer-Policy' exists and has expected value": false,
+					"Date header not empty": true,
+					"Schema validation for the response body": false,
+					"Response has the required fields": false,
+					"Field value is exactly 'true'": true,
+					"Response body does not contain 'false' in expected field": false,
+					"Field data type is boolean-like": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 254,
+	"collection": {
+		"requests": [
+			{
+				"id": "79c57e83-72da-41a5-9a48-7e08e2037884",
+				"method": "POST"
+			},
+			{
+				"id": "04927a79-6411-4534-8efb-560ad642eb44",
+				"method": "POST"
+			}
+		]
+	}
+}
