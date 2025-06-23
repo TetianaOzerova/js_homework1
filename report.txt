@@ -1,0 +1,164 @@
+📊 
+ Test Results Summary
+
+
+ 🧪 
+ Test Name
+
+
+View Results Tree.jmx
+
+
+Testing Date: Mon Jun 23, 9:49 PM
+
+
+
+
+ 👥 
+ Thread Group
+
+
+Total Threads: Not fully visible but appears to range from 10 to 1000 in the Graphs.
+
+
+Loop Count: Infinite in one test configuration.
+
+
+Ramp-up Period: Not explicitly stated.
+
+
+
+
+
+
+---
+
+
+ 📈 
+ Performance Metrics
+
+
+ 📌 
+ Aggregate Report
+
+
+(Extracted partially from multiple images)
+
+
+Label        Samples        Avg (ms)        95% Line        Max (ms)        Error %        Throughput (KB/sec)        Sent KB/sec
+
+
+characters        14896        1994        361        16        0.00%        4.16        -
+charactersid        4836        1        48        69        49.00%        3.32        -
+charactersid2        1705        0        -        -        -        -        -
+
+
+
+
+ 📌 
+ Summary Report
+
+
+(From summaryrept file)
+
+
+Label        Samples        Avg (ms)        Bytes/Sec        Sent KB/sec        Avg Bytes
+
+
+characters        1994        4714.06        -        4.16        -
+charactersid2        1705        -        -        3.32        -
+Total        -        2409.04        -        96        -
+
+
+
+
+
+
+---
+
+
+ 📉 
+ Observations
+
+
+High average response times (e.g., 4714.06 ms and 1994 ms), particularly under the label characters.
+
+
+A notable 49% error rate was seen on charactersid, which is a red flag.
+
+
+Throughput is relatively low (~4 KB/sec), indicating possible bottlenecks or inefficient payloads.
+
+
+
+
+
+
+---
+
+
+ ✅ 
+ Recommendations
+
+
+1. Address High Error Rate
+
+
+Investigate the endpoint charactersid for validation, data format, or backend issues.
+
+
+Check server logs or application exceptions.
+
+
+
+
+2. Optimize Payloads and Responses
+
+
+Consider compressing large responses (e.g., JSON).
+
+
+Optimize the data sent in POST/GET requests.
+
+
+
+
+3. Improve Server Performance
+
+
+Review server capacity (CPU/RAM).
+
+
+Tune backend DB queries or caches if applicable.
+
+
+Add horizontal scaling (load balancing) if under heavy concurrency.
+
+
+
+
+4. Analyze Long Response Times
+
+
+Break down which part of the request is causing the delay (e.g., backend, network, rendering).
+
+
+Use JMeter plugins for deeper diagnostics (e.g., Backend Listener to InfluxDB + Grafana).
+
+
+
+
+5. Run Additional Tests
+
+
+Run with varying thread counts and ramp-up periods to determine thresholds.
+
+
+Include baseline (1-5 users) and stress (peak users) scenarios.
+
+
+
+
+
+
+---
